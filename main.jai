@@ -22,7 +22,7 @@ main :: () {
     InitWindow(WIN_W, WIN_H, WIN_TITLE);
 
 	default_font = GetFontDefault();
-	
+
     defer CloseWindow();
 
     while !WindowShouldClose() {
@@ -39,6 +39,7 @@ main :: () {
 
 		if mins == 60 {
 			hour += 1;
+            mins = 0;
 		}
 
 		time_string = tprint("%:%:%", hour, mins, cast(int)sec);
