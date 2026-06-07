@@ -61,9 +61,9 @@ main :: () {
         UpdateMusicStream(music);
         ClearBackground(Color.{0x00, 0x00, 0x00, 0xFF});
 
-        dt := GetFrameTime();
+        dt := GetFrameTime() * time_scale;
 
-		sec += dt * time_scale;
+		sec += dt;
 
 		if sec >= 60 {
 			mins += 1;
