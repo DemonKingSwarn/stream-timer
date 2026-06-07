@@ -32,8 +32,8 @@ main :: () {
     args := get_command_line_arguments();
 	defer array_reset(*args);
 
-    if args.count == 0 {
-        print("Usage: % <min/sec> <int> <caption>", args[0]);
+    if args.count < 4 {
+        print("Usage: % <min/sec> <int> <caption>\n", args[0]);
         return;
     }
 
