@@ -1,6 +1,9 @@
 #import "Basic";
-#import "Raylib";
+#import "Curl";
 #import "Command_Line";
+
+#import "Raylib";
+#import "Jaison";
 
 #load "config.jai";
 
@@ -103,6 +106,9 @@ main :: () {
         BeginDrawing();
             DrawTextEx(default_font, to_c_string(time_string), .{cast(float)time_pos_x, cast(float)time_pos_y}, FONT_SIZE, 10, WHITE);
             DrawTextEx(default_font, to_c_string(caption_string), .{cast(float)caption_pos_x, cast(float)caption_pos_y + 100}, FONT_SIZE, 10, WHITE);
+
         EndDrawing();
     }
 }
+
+
