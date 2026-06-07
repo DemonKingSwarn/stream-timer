@@ -2,19 +2,14 @@
 #import "Raylib";
 #import "Command_Line";
 
-WIN_W :: 1920;
-WIN_H :: 1080;
-
-WIN_TITLE :: "Stream Timer";
-
-FONT_SIZE :: 60;
+#load "config.jai";
 
 hour := 0;
 mins := 0;
 sec := 0.0;
 
 time_string : string;
-caption_string := "GRABBING TEA";
+caption_string : string;
 
 default_font : Font;
 
@@ -25,8 +20,6 @@ sec_timer : int;
 is_minutes : bool;
 
 time_scale := 1.0;
-
-MUSIC_FILE :: "data/music/Siine - Need A Friend.wav";
 
 main :: () {
     args := get_command_line_arguments();
