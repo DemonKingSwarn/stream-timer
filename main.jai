@@ -1,5 +1,6 @@
 #import "Basic";
 #import "Raylib";
+#import "Command_Line";
 
 WIN_W :: 1920;
 WIN_H :: 1080;
@@ -17,20 +18,59 @@ caption_string := "GRABBING TEA";
 
 default_font : Font;
 
+timer : int;
+min_timer : int;
+sec_timer : int;
+
+is_minutes : bool;
+
+time_scale := 1.0;
+
+MUSIC_FILE :: "data/music/Siine - Need A Friend.wav";
+
 main :: () {
+    args := get_command_line_arguments();
+	defer array_reset(*args);
+
+    if args.count == 0 {
+        print("Usage: % <min/sec> <int> <caption>", args[0]);
+        return;
+    }
+
+    if args[1] == "min" {
+        min_timer = string_to_int(args[2]);
+        is_minutes = true;
+    } else if args[1] == "sec" {
+        sec_timer = string_to_int(args[2]);
+        is_minutes = false;
+    }
+
+    str := cast(string)args[3];
+    if str.count > 0 {
+        caption_string = str;
+    }
+
+
     SetTargetFPS(60);
     InitWindow(WIN_W, WIN_H, WIN_TITLE);
+    InitAudioDevice();
+
+    music := LoadMusicStream(to_c_string(MUSIC_FILE));
+    music.looping = true;
+
+    PlayMusicStream(music);
 
 	default_font = GetFontDefault();
 
     defer CloseWindow();
 
     while !WindowShouldClose() {
+        UpdateMusicStream(music);
         ClearBackground(Color.{0x00, 0x00, 0x00, 0xFF});
 
         dt := GetFrameTime();
 
-		sec += dt;
+		sec += dt * time_scale;
 
 		if sec >= 60 {
 			mins += 1;
@@ -41,6 +81,20 @@ main :: () {
 			hour += 1;
             mins = 0;
 		}
+
+        if is_minutes {
+            timer = min_timer;
+
+            if mins >= timer {
+                time_scale = 0.0;
+            }
+        } else {
+            timer = sec_timer;
+
+            if cast(int)sec >= timer {
+                time_scale = 0.0;
+            }
+        }
 
 		time_string = tprint("%:%:%", hour, mins, cast(int)sec);
 
