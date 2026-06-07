@@ -17,7 +17,9 @@ Make sure you have `data/music` directory if you want to play the music and plac
 jai first.jai
 ```
 
-
+> [!NOTE]
+>
+> We do not support Windows for this project
 
 
 recreational programming go brrrrrrrrrrr
