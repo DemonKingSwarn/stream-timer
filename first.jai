@@ -2,6 +2,10 @@
 #import "Compiler";
 
 #run {
+    #if OS == .WINDOWS {
+        #assert false, "We do not support the trash!";
+    }
+
     w := compiler_create_workspace("Jai Ho");
 
     options := get_build_options(w);
