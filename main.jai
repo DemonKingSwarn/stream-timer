@@ -89,7 +89,7 @@ main :: () {
             }
         }
 
-		time_string = tprint("%:%:%", hour, mins, cast(int)sec);
+		time_string = tprint("%:%:%", formatInt(hour, minimum_digits=2), formatInt(mins, minimum_digits=2), formatInt(cast(int)sec, minimum_digits=2));
 
 		time_string_width := MeasureText(to_c_string(time_string), FONT_SIZE);
 		caption_string_width := MeasureText(to_c_string(caption_string), FONT_SIZE);
