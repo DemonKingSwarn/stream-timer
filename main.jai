@@ -59,7 +59,7 @@ main :: () {
 
     while !WindowShouldClose() {
         UpdateMusicStream(music);
-        ClearBackground(Color.{0x00, 0x00, 0x00, 0xFF});
+        ClearBackground(BLACK);
 
         dt := GetFrameTime() * time_scale;
 
@@ -101,8 +101,8 @@ main :: () {
 		caption_pos_y := (WIN_H / 2) - (FONT_SIZE / 2);
 
         BeginDrawing();
-            DrawTextEx(default_font, to_c_string(time_string), .{cast(float)time_pos_x, cast(float)time_pos_y}, FONT_SIZE, 10, Color.{0xFF, 0xFF, 0xFF, 0xFF});
-            DrawTextEx(default_font, to_c_string(caption_string), .{cast(float)caption_pos_x, cast(float)caption_pos_y + 100}, FONT_SIZE, 10, Color.{0xFF, 0xFF, 0xFF, 0xFF});
+            DrawTextEx(default_font, to_c_string(time_string), .{cast(float)time_pos_x, cast(float)time_pos_y}, FONT_SIZE, 10, WHITE);
+            DrawTextEx(default_font, to_c_string(caption_string), .{cast(float)caption_pos_x, cast(float)caption_pos_y + 100}, FONT_SIZE, 10, WHITE);
         EndDrawing();
     }
 }

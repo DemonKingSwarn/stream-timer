@@ -5,5 +5,7 @@ WIN_TITLE :: "Stream Timer";
 
 FONT_SIZE :: 60;
 
+BLACK :: Color.{0x00, 0x00, 0x00, 0xFF};
+WHITE :: Color.{0xFF, 0xFF, 0xFF, 0xFF};
 
 MUSIC_FILE :: "data/music/Siine - Need A Friend.wav";
