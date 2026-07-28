@@ -1,27 +1,3 @@
-#import "Basic";
-#import "Command_Line";
-
-#import "Raylib";
-#import "Qrencode";
-
-#load "config.jai";
-
-hour := 0;
-mins := 0;
-sec := 0.0;
-
-time_string : string;
-caption_string : string;
-
-default_font : Font;
-
-timer : int;
-min_timer : int;
-sec_timer : int;
-
-is_minutes : bool;
-
-time_scale := 1.0;
 
 main :: () {
     get_cli_args();
@@ -92,7 +68,7 @@ main :: () {
             DrawTextEx(default_font, to_c_string(time_string), .{cast(float)time_pos_x, cast(float)time_pos_y}, FONT_SIZE, 10, WHITE);
             DrawTextEx(default_font, to_c_string(caption_string), .{cast(float)caption_pos_x, cast(float)caption_pos_y + 100}, FONT_SIZE, 10, WHITE);
 
-            DrawTexture(qr_tex, 15, 15, Color.{0xFF, 0xFF, 0xFF, 0xFF});
+            DrawTexture(qr_tex, 15, 15, WHITE);
 
         EndDrawing();
     }
@@ -123,3 +99,28 @@ get_cli_args :: () {
     }
 
 }
+
+hour := 0;
+mins := 0;
+sec := 0.0;
+
+time_string : string;
+caption_string : string;
+
+default_font : Font;
+
+timer : int;
+min_timer : int;
+sec_timer : int;
+
+is_minutes : bool;
+
+time_scale := 1.0;
+
+#load "config.jai";
+
+#import "Basic";
+#import "Command_Line";
+
+#import "Raylib";
+#import "Qrencode";
