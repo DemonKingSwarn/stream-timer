@@ -1,5 +1,7 @@
 # Stream Timer
 
+![image showing stream timer in action](./.assets/show.png)
+
 This is a basic stream timer for my twitch streams.
 
 ## Usage
@@ -23,3 +25,7 @@ jai first.jai
 
 
 recreational programming go brrrrrrrrrrr
+
+## Inspiration
+
+This was inspired by tsoding's sowon2.

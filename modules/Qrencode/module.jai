@@ -1,9 +1,9 @@
-generate_qr :: (url: string) {
-  res := get(tprint("https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=%", url));
+generate_qr :: (text: string, path: string) {
+  res := get(tprint("https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=%", text));
   defer free(res);
 
   //print("%\n", res.body);
-  qr := file_open("qr.png", for_writing = true, keep_existing_content = false);
+  qr := file_open(path, for_writing = true, keep_existing_content = false);
   defer file_close(*qr);
 
   file_write(*qr, res.body);

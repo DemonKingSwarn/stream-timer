@@ -2,9 +2,11 @@
 main :: () {
     get_cli_args();
 
-    generate_qr(MUSIC_URL);
+    generate_qr(MUSIC_URL, "qr.png");
+    //generate_qr(UPI_QR_TEXT, UPI_QR);
 
     SetTargetFPS(60);
+    SetConfigFlags(xx ConfigFlags.FLAG_FULLSCREEN_MODE);
     InitWindow(WIN_W, WIN_H, WIN_TITLE);
     InitAudioDevice();
 
@@ -17,7 +19,12 @@ main :: () {
     qr_tex := LoadTextureFromImage(qr);
     UnloadImage(qr);
 
-	  default_font = GetFontDefault();
+    upi_qr := LoadImage(to_c_string(UPI_QR));
+    upi_tex := LoadTextureFromImage(upi_qr);
+    UnloadImage(upi_qr);
+
+	  //default_font = GetFontDefault();
+    default_font = LoadFont(to_c_string(FONT));
 
     defer CloseWindow();
 
@@ -68,7 +75,11 @@ main :: () {
             DrawTextEx(default_font, to_c_string(time_string), .{cast(float)time_pos_x, cast(float)time_pos_y}, FONT_SIZE, 10, WHITE);
             DrawTextEx(default_font, to_c_string(caption_string), .{cast(float)caption_pos_x, cast(float)caption_pos_y + 100}, FONT_SIZE, 10, WHITE);
 
-            DrawTexture(qr_tex, 15, 15, WHITE);
+            DrawTextureEx(qr_tex, .{15, 15}, 0, 1, WHITE);
+            DrawTextEx(default_font, to_c_string("MUSIC"), .{50, 350}, FONT_SIZE, 10, YELLOW);
+            
+            DrawTextureEx(upi_tex, .{1600, 15}, 0, 1, WHITE);
+            DrawTextEx(default_font, to_c_string(UPI_TEXT), .{1700, 350}, FONT_SIZE, 10, YELLOW);
 
         EndDrawing();
     }

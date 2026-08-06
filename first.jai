@@ -6,7 +6,7 @@
         #assert false, "We do not support the trash!";
     }
 
-    w := compiler_create_workspace("Jai Ho");
+    w := compiler_create_workspace("base compiler workspace");
 
     options := get_build_options(w);
 
